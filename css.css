@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
-
-
-
 body {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; /* This centers the card containers in the body */
+  align-items: center; /* This centers the card containers in the body */
+  justify-content: center; /* This centers the card containers in the body */
 
   background-size: 1000px;
   background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
@@ -18,33 +15,53 @@ body {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
   background-size: 500px;
   background-position: center center;
-  padding: 20px 100px;
+  padding: 20px 100px; /* Default padding */
 /*  min-width: 800px; */
-  
+
   transform: rotateZ(-5deg);
   box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
-  
-  position: absolute;
+
+  position: absolute; /* Keeps cards positioned absolutely */
+
+  /* --- Uniform Size for ALL paper elements --- */
+  width: 750px;
+  height: 550px;
+  box-sizing: border-box;
+
+  /* --- Added Flexbox for Centering Content --- */
+  display: flex;
+  flex-direction: column; /* Stack items vertically (e.g., text above image) */
+  align-items: center;    /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  /* --- End of Flexbox --- */
 }
 
 .paper.heart {
   position: relative;
-  width: 200px;
-  height: 200px;
-  padding: 0;
-  border-radius: 50%;
+  padding: 20px;
+  border-radius: 0;
+  box-sizing: border-box;
+  /* Inherits flex properties from .paper to center its content (if any) */
 }
 
 .paper.image {
-  padding: 10px;
+  padding: 30px;
+  /* Inherits flex properties from .paper */
 }
 .paper.image p {
   font-size: 30px;
+  /* Text alignment remains useful for multi-line text */
+  /* text-align: center; */ /* Already set below in general 'p' */
 }
 
 img {
-  max-height: 200px;
-  width: 100%;
+  max-height: 300px;
+  max-width: 100%; /* Prevent image exceeding container width */
+  height: auto;
+  display: block; /* Good practice, though flex might override */
+  /* margin: 15px auto; */ /* Auto margins might conflict with flex centering, remove or adjust */
+  margin-top: 15px;    /* Add space above image */
+  margin-bottom: 15px; /* Add space below image */
   user-select: none;
 }
 
@@ -57,9 +74,10 @@ img {
   top: 0;
   left: 0;
   background-size: 150px;
-  background-position: center center;
+  background-position: center center; /* Centers the background within the pseudo-element */
   background-repeat: no-repeat;
   opacity: 0.6;
+  pointer-events: none; /* Prevent pseudo-element from interfering with content */
 }
 
 p {
@@ -68,6 +86,14 @@ p {
   color: rgb(0,0,100);
   opacity: 0.75;
   user-select: none;
-  
-  // filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9));
+  text-align: center; /* Center text lines within the paragraph block */
+  /* margin-top: 0; */    /* Flex handles centering, adjust margins for spacing */
+  /* margin-bottom: 10px; */
+  margin: 10px 0; /* Add some vertical margin for spacing */
+  /* filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9)); */
+}
+
+/* Example: Adjustments for the first card if needed */
+.paper:first-child p {
+  /* font-size: 45px; */
 }
